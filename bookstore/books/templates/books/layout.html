@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>{% block title %}CRUD{% endblock title %}</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        <style>
+          footer {
+            background-color: #555;
+            color: white;
+            padding: 15px;
+          }
+        </style>
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="row content">
+              <div class="col-sm-3 sidenav">
+                <h4>CRUD</h4>
+                <ul class="nav nav-pills nav-stacked">
+                  {% if message %}
+                    <div class="alert alert-success">
+                        <strong>{{ message }}</strong>
+                    </div>
+                  {% endif %}
+                  {% if success %}
+                    <div class="alert alert-success">
+                        <strong>{{success}}</strong>
+                    </div>
+                  {% endif %}
+                  {% if success_message %}
+                    <div class="alert alert-success">
+                        <strong>{{success_message}}</strong>
+                    </div>
+                  {% endif %}
+                  <li {% if request.path == "/books/list-books/" %}class="active"{% endif %}>
+                    <a href="{% url 'books:list-books' %}">List Books</a>
+                  </li>
+                  <li {% if request.path == "/books/create-book/" %}class="active"{% endif %}>
+                    <a href="{% url 'books:create-book' %}">Create Book</a>
+                  </li>
+                </ul><br>
+              </div>
+              <div class="col-sm-9">
+                  {% block content %}
+                  {% endblock content %}
+              </div>
+            </div>
+          </div>
+          <footer class="container-fluid">
+            <p>My Project CRUD Books</p>
+          </footer>
+    </body>
+</html>

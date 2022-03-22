@@ -1,0 +1,39 @@
+{% extends "books/layout.html" %}
+{% block title %}
+    Create Book | {{ block.super }}
+{% endblock title %}
+{% block content %}
+  <h4><small>Create Book</small></h4>
+  <hr>
+  <div class="card-body">
+    <div class="table-responsive">
+      <form action="{% url 'books:create-book' %}" enctype="multipart/form-data" method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+          <label>Name<span style="color: red">*</span> :</label>
+          {{ form.name }}
+        </div>
+        <div class="form-group">
+          <label>Author<span style="color: red">*</span> :</label>
+          {{ form.author }}
+        </div><div class="form-group">
+          <label>Publisher<span style="color: red">*</span> :</label>
+          {{ form.publisher }}
+        </div>
+        <div class="form-group">
+          <label>Release date<span style="color: red">*</span> :</label>
+         {{ form.release_date }}
+        </div>
+        <div class="form-group">
+          <label>Price<span style="color: red">*</span> :</label>
+          {{ form.price }}
+        </div>
+        <div class="form-group">
+          <label>Image<span style="color: red">*</span> :</label>
+          {{ form.image }}
+        </div>
+        <button class="btn btn-secondary" type="submit">Create Book</button>
+      </form>
+    </div>
+  </div>
+{% endblock content %}

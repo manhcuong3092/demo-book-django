@@ -1,0 +1,13 @@
+
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'books/style.css' %}">
+
+{% if book_list %}
+    <ul>
+    {% for book in book_list %}
+        <li><a href="{% url 'books:detail' book.id %}">{{ book.name }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No Books are available.</p>
+{% endif %}

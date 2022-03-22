@@ -1,0 +1,17 @@
+{% extends "books/layout.html" %}
+{% block title %}
+    Edit Book | {{ block.super }}
+{% endblock title %}
+{% block content %}
+  <h4><small>Edit Book</small></h4>
+  <hr>
+  <div class="card-body">
+    <div class="table-responsive">
+      <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-secondary" type="submit">Update Book</button>
+      </form>
+    </div>
+  </div>
+{% endblock content %}
